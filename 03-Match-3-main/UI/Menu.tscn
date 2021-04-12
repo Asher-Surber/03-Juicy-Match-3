@@ -1,47 +1,131 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://UI/Menu.gd" type="Script" id=1]
+[ext_resource path="res://UI/background1.png" type="Texture" id=2]
+[ext_resource path="res://UI/greySheet.png" type="Texture" id=3]
+[ext_resource path="res://UI/Metamorphous-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://UI/font_theme.tres" type="Theme" id=5]
+[ext_resource path="res://UI/Credits and Options/CreditsButton.gd" type="Script" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 4 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 0, 237, 190, 48 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 0, 50, 190, 49 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 0, 188, 190, 48 )
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 4 )
 
 [node name="Menu" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -275.0
+margin_top = -540.0
+margin_right = 285.0
+margin_bottom = 484.0
+theme = ExtResource( 5 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Background" type="ColorRect" parent="."]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 566.0
-margin_bottom = 482.0
-color = Color( 0, 0, 0, 0.501961 )
+[node name="Background" type="TextureRect" parent="."]
+margin_right = 560.0
+margin_bottom = 1024.0
+texture = ExtResource( 2 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="."]
-margin_right = 576.0
-margin_bottom = 512.0
+visible = false
+margin_right = 550.0
+margin_bottom = 1024.0
+custom_fonts/font = SubResource( 1 )
 text = "Welcome to Match-3"
 align = 1
 valign = 1
-
-[node name="Play" type="Button" parent="."]
-margin_left = 238.0
-margin_top = 512.0
-margin_right = 338.0
-margin_bottom = 552.0
-text = "Play"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Quit" type="Button" parent="."]
-margin_left = 238.0
-margin_top = 562.0
-margin_right = 338.0
-margin_bottom = 602.0
+[node name="Play" type="TextureButton" parent="."]
+margin_left = 190.0
+margin_top = 790.0
+margin_right = 290.0
+margin_bottom = 830.0
+rect_scale = Vector2( 2, 2 )
+theme = ExtResource( 5 )
+texture_normal = SubResource( 2 )
+texture_pressed = SubResource( 3 )
+texture_hover = SubResource( 4 )
+expand = true
+
+[node name="Label" type="Label" parent="Play"]
+margin_right = 101.0
+margin_bottom = 37.0
+custom_colors/font_color = Color( 0.584314, 0.572549, 0.572549, 1 )
+text = "Play"
+align = 1
+valign = 1
+
+[node name="Quit" type="TextureButton" parent="."]
+margin_left = 190.0
+margin_top = 890.0
+margin_right = 290.0
+margin_bottom = 930.0
+rect_scale = Vector2( 2, 2 )
+theme = ExtResource( 5 )
+texture_normal = SubResource( 2 )
+texture_pressed = SubResource( 3 )
+texture_hover = SubResource( 4 )
+expand = true
+
+[node name="Label2" type="Label" parent="Quit"]
+margin_right = 101.0
+margin_bottom = 37.0
+custom_colors/font_color = Color( 0.584314, 0.572549, 0.572549, 1 )
 text = "Quit"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Credits" type="Button" parent="."]
+margin_left = 451.973
+margin_top = 927.0
+margin_right = 523.973
+margin_bottom = 987.0
+theme = ExtResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.658824, 0.807843, 0.278431, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+shortcut_in_tooltip = false
+text = "Credits"
+flat = true
+expand_icon = true
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="Credits" to="Credits" method="_on_CreditsButton_pressed"]

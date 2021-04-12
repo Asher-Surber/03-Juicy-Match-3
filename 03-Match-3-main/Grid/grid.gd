@@ -18,6 +18,7 @@ var possible_pieces = [
 	load("res://Pieces/Blue.tscn")
 ]
 
+
 var all_pieces
 
 var first_touch
@@ -198,6 +199,7 @@ func destroy_matched():
 		for j in height:
 			if(all_pieces[i][j].is_matched):
 				all_pieces[i][j].die()
+				#all_pieces[i][j].get_node("Sparkles").set("Emitting", true)
 				all_pieces[i][j] = null
 	collapse_columns()
 
@@ -246,7 +248,9 @@ func touch_input():
 			all_pieces[first_touch.x][first_touch.y].selected = false
 			touch_difference(first_touch, final_touch)
 
+# warning-ignore:unused_argument
 func move_piece(p, position_change):
-	p.position += position_change
-
+	#p.position += position_change
+	$Swap.interpolate_property(p, "position", position, position+position_change, 1, Tween.TRANS_EXPO, Tween.EASE_IN)
+	$Swap.start()
 

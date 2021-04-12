@@ -15,9 +15,9 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Godot Match 3"
+config/name="Shattered Souls"
 run/main_scene="res://UI/Menu.tscn"
-config/icon="res://icon.png"
+config/icon="res://Pieces/gem_pack._3.png"
 
 [autoload]
 
@@ -25,9 +25,11 @@ Global="*res://Global.gd"
 
 [display]
 
-window/size/width=576
+window/size/width=550
 window/size/height=1024
-window/size/resizable=false
+window/size/test_width=550
+window/size/test_height=1024
+window/dpi/allow_hidpi=true
 window/handheld/orientation="portrait"
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
