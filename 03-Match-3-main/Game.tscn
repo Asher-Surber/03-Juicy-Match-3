@@ -18,6 +18,8 @@ yStart = 832
 offset = 128
 background = ExtResource( 2 )
 
+[node name="Tween" type="Tween" parent="grid"]
+
 [node name="HUD" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0

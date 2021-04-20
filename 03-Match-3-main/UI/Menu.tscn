@@ -25,7 +25,7 @@ flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 0, 188, 190, 48 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 4 )
 
 [node name="Menu" type="Control"]
@@ -113,7 +113,7 @@ margin_top = 927.0
 margin_right = 523.973
 margin_bottom = 987.0
 theme = ExtResource( 5 )
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.658824, 0.807843, 0.278431, 1 )
 custom_colors/font_color_hover = Color( 0, 0, 0, 1 )

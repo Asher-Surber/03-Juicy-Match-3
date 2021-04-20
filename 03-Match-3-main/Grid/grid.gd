@@ -1,8 +1,10 @@
 extends Node2D
 
 # Board Variables
-export (int) var width 
-export (int) var height 
+#export (int) var 
+var width = 6
+#export (int) 
+var height = 7
 export (int) var xStart 
 export (int) var yStart 
 export (int) var offset
@@ -15,9 +17,13 @@ var new_position = Vector2(0,0)
 var possible_pieces = [
 	load("res://Pieces/Red.tscn"),
 	load("res://Pieces/Green.tscn"),
-	load("res://Pieces/Blue.tscn")
+	load("res://Pieces/Blue.tscn"),
+	load("res://Pieces/Purple.tscn"),
+	load("res://Pieces/Yellow.tscn"),
+	load("res://Pieces/Orange.tscn"),
+	load("res://Pieces/Teal.tscn"),
+	load("res://Pieces/Pink.tscn")
 ]
-
 
 var all_pieces
 
@@ -66,6 +72,10 @@ func generate_pieces():
 			
 			add_child(piece)
 			piece.position = Vector2(xStart + i * offset, yStart - j * offset)
+			var target_pos = piece.position
+			var appear_duration = randf()*2 + 1.0
+			$Tween.interpolate_property(piece, "position", position, target_pos, appear_duration, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
+			$Tween.start()
 			all_pieces[i][j] = piece
 
 func check_for_matches(column, row, color):
@@ -199,7 +209,6 @@ func destroy_matched():
 		for j in height:
 			if(all_pieces[i][j].is_matched):
 				all_pieces[i][j].die()
-				#all_pieces[i][j].get_node("Sparkles").set("Emitting", true)
 				all_pieces[i][j] = null
 	collapse_columns()
 
@@ -248,9 +257,9 @@ func touch_input():
 			all_pieces[first_touch.x][first_touch.y].selected = false
 			touch_difference(first_touch, final_touch)
 
-# warning-ignore:unused_argument
+
 func move_piece(p, position_change):
-	#p.position += position_change
-	$Swap.interpolate_property(p, "position", position, position+position_change, 1, Tween.TRANS_EXPO, Tween.EASE_IN)
-	$Swap.start()
+	p.position += position_change
+#	$Swap.interpolate_property(p, "position", position, position+position_change, 1, Tween.TRANS_EXPO, Tween.EASE_IN)
+#	$Swap.start()
 
